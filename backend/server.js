@@ -13,5 +13,5 @@ app.use('/usuarios', usuarioRoutes);
 app.use('/tarefas', tarefaRoutes);
 
 app.listen(3000, () => {
-    console.log('Servidor rodando na porta 3000');
+    console.log('Servidor rodandohttp://localhost:3000 ');
 });
