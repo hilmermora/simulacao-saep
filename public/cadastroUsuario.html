@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro de Usuário</title>
+</head>
+<body>
+
+<h2>Cadastrar Usuário</h2>
+
+<form id="formUsuario">
+    <input type="text" id="nome" placeholder="Nome" required><br><br>
+    <input type="email" id="email" placeholder="Email" required><br><br>
+    <button type="submit">Cadastrar</button>
+</form>
+
+<p id="msg"></p>
+
+<script>
+document.getElementById('formUsuario').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const nome = document.getElementById('nome').value;
+    const email = document.getElementById('email').value;
+
+    const res = await fetch('http://localhost:3000/usuarios', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome, email })
+    });
+
+    const data = await res.json();
+
+    document.getElementById('msg').innerText = data.mensagem || 'Erro';
+});
+</script>
+
+</body>
+</html>

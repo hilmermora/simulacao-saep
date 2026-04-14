@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro de Tarefa</title>
+</head>
+<body>
+
+<h2>Cadastrar Tarefa</h2>
+
+<form id="formTarefa">
+    <select id="usuario" required></select><br><br>
+
+    <input type="text" id="descricao" placeholder="Descrição" required><br><br>
+    <input type="text" id="setor" placeholder="Setor" required><br><br>
+
+    <select id="prioridade" required>
+        <option value="">Selecione prioridade</option>
+        <option value="baixa">Baixa</option>
+        <option value="media">Média</option>
+        <option value="alta">Alta</option>
+    </select><br><br>
+
+    <button type="submit">Cadastrar</button>
+</form>
+
+<p id="msg"></p>
+
+<script>
+async function carregarUsuarios() {
+    const res = await fetch('http://localhost:3000/usuarios');
+    const usuarios = await res.json();
+
+    const select = document.getElementById('usuario');
+
+    usuarios.forEach(u => {
+        const option = document.createElement('option');
+        option.value = u.id;
+        option.textContent = u.nome;
+        select.appendChild(option);
+    });
+}
+
+document.getElementById('formTarefa').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const id_usuario = document.getElementById('usuario').value;
+    const descricao = document.getElementById('descricao').value;
+    const setor = document.getElementById('setor').value;
+    const prioridade = document.getElementById('prioridade').value;
+
+    const res = await fetch('http://localhost:3000/tarefas', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id_usuario, descricao, setor, prioridade })
+    });
+
+    const data = await res.json();
+    document.getElementById('msg').innerText = data.mensagem || 'Erro';
+});
+
+carregarUsuarios();
+</script>
+
+</body>
+</html>

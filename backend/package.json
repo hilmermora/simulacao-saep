@@ -1,0 +1,27 @@
+{
+  "name": "simula-o-saep-sistema-de-gerenciamento-de-tarefas",
+  "version": "1.0.0",
+  "description": "aplicação para o gerenciamento de tarefas no formato to-do list, utilizando as tecnologias estudadas ao longo do curso.",
+  "keywords": [],
+  "homepage": "https://github.com/hilmermora/Simula-o-SAEP-Sistema-de-Gerenciamento-de-Tarefas#readme",
+  "bugs": {
+    "url": "https://github.com/hilmermora/Simula-o-SAEP-Sistema-de-Gerenciamento-de-Tarefas/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hilmermora/Simula-o-SAEP-Sistema-de-Gerenciamento-de-Tarefas.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "pg": "^8.20.0"
+  }
+}
